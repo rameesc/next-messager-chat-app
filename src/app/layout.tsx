@@ -32,7 +32,7 @@ export default function RootLayout({
 
         <ToasterContext/>
          <AuthContext>
-          {/* <ActiveStatus/> */}
+          <ActiveStatus/>
           {children}
          </AuthContext>
        
