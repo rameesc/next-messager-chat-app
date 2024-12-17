@@ -4,25 +4,25 @@ import { Avatar } from '@/components/Avatar'
 import { User } from '@prisma/client'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 
 type UserBoxProps={
-    key:string,
+    
     data:User
 }
 
 export const UserBox:React.FC<UserBoxProps> = ({
-    key,
+   
     data
 }) => {
 
    const route= useRouter()
-   const [isLoading,setIsloading]=useState(false)
+  
 
 
    const handleClick = useCallback(()=>{
 
-     setIsloading(true)
+    
         alert(data.id)
      axios.post('/api/conversation',{
         userId:data.id
@@ -30,7 +30,7 @@ export const UserBox:React.FC<UserBoxProps> = ({
      .then((data)=>{
         route.push(`/conversation/${data.data.id}`)
      })
-     .finally(()=>setIsloading(false))
+    
 
    },[data,route])
 

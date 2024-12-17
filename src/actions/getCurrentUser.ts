@@ -25,8 +25,8 @@ export const getCurrentUser = async()=>{
 
       return currentUser
 
-    }catch(error:any){
-        return null
-
-    }
+    }catch(error:unknown){
+      if(error instanceof Error)
+      return error.message
+  }
 }

@@ -4,14 +4,15 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react'
+import { IconType } from 'react-icons';
 
 type DesktopItemProps={
 
     key:string;
     href:string;
     label:string;
-   icon:any
-   active?:boolean
+   icon:IconType;
+   active?:boolean;
     onClick?:()=>void
 }
 

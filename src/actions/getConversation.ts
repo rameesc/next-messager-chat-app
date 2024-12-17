@@ -41,7 +41,8 @@ export const getConversation=async()=>{
         return conversation
 
 
-    }catch(error:any){
-        return []
+    }catch(error:unknown){
+        if(error instanceof Error)
+        return error.message
     }
 }

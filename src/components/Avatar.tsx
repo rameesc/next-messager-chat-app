@@ -3,7 +3,7 @@
 import { userActiveList } from '@/hooks/useActiveList'
 import { User } from '@prisma/client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 type AvatarProps={
     user:User
@@ -16,9 +16,11 @@ export const Avatar:React.FC<AvatarProps> = ({
 
   const {members} = userActiveList()
 
-  const isActive=members.indexOf(user?.email!)!==-1
+  const isActive=useMemo(()=>{
+    return members.indexOf(user?.email!)!==-1
+  },[members])
 
- console.log(members)
+ 
   return (
 
     <div className='relative'>

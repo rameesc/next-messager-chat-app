@@ -37,7 +37,7 @@ export const authOptions: AuthOptions = {
 
             },
 
-           async authorize(credentials, req) {
+           async authorize(credentials) {
 
               if(!credentials?.email || !credentials?.password){
 

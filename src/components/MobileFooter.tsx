@@ -8,7 +8,7 @@ import { MobileItem } from './MobileItem'
 export const MobileFooter = () => {
 
     const routes = useRoutes()
-    const {isOpen,conversationId} = useConversation()
+    const {isOpen} = useConversation()
 
     if(isOpen){
         return null;

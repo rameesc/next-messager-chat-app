@@ -57,7 +57,7 @@ export const POST=async(
             return NextResponse.json(newConversation);
         }
 
-        let existingConversations = await prisma?.conversation.findMany({
+        const existingConversations = await prisma?.conversation.findMany({
 
             where:{
                 OR:[
@@ -118,7 +118,7 @@ export const POST=async(
         return NextResponse.json(newConversation)
 
     } catch(error:any){
-        return new NextResponse('internal error')
+        return new NextResponse(error)
 
     }
 }

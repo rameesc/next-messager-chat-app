@@ -27,8 +27,9 @@ import { getCurrentUser } from './getCurrentUser'
             return conversation
 
 
-        }catch(err:any){
-            return null
+        }catch(error:unknown){
+            if(error instanceof Error)
+            return error.message
         }
 
 

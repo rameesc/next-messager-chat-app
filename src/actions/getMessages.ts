@@ -26,10 +26,9 @@ export const getMessages = async(
 
       return message
 
-    }catch(error:any){
-
-        return []
-
+    }catch(error:unknown){
+        if(error instanceof Error)
+        return error.message
     }
 
 }

@@ -1,17 +1,17 @@
 
 
-import React, { useEffect, useRef, useState } from 'react'
+import  { useEffect,  useState } from 'react'
 import { userActiveList } from './useActiveList'
 import { Channel, Members } from 'pusher-js'
 import { pusherClient } from '@/libs/pusher'
 
 export const useAciveChannel = () => {
 
-    const {set,add,remove,members,typing,typingRemove}=userActiveList()
+    const {set,add,remove}=userActiveList()
 
     const [activeChannel,setActiveChannel]=useState<Channel | null>(null)
 
-    const typingTimeoutRef= useRef<NodeJS.Timeout | null>(null)
+    
 
 
     useEffect(()=>{
@@ -29,7 +29,7 @@ export const useAciveChannel = () => {
 
             const initialMembers:string[] =[]
 
-            members.each((member:Record<string,any>)=>{
+            members.each((member:Record<string,string>)=>{
                 initialMembers.push(member.id)
             })
 
@@ -37,14 +37,14 @@ export const useAciveChannel = () => {
 
         })
           // Listen for new members joining
-         channel.bind("pusher:member_added", (member:Record<string,any>) => {
+         channel.bind("pusher:member_added", (member:Record<string,string>) => {
            
             add(member.id);
 
          });
 
          // Listen for members leaving
-        channel.bind("pusher:member_removed", (member:Record<string,any>) => {
+        channel.bind("pusher:member_removed", (member:Record<string,string>) => {
           remove(member.id)
         });
       

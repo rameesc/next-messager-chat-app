@@ -2,7 +2,7 @@
 
 
 import React from 'react'
-import { FieldError, FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
  type MessageInputProps={
 
@@ -17,7 +17,7 @@ import { FieldError, FieldErrors, FieldValues, UseFormRegister } from 'react-hoo
 export const MessageInput:React.FC<MessageInputProps> = ({
     id,
     register,
-    error,
+    
     required,
     placeholder,
     type

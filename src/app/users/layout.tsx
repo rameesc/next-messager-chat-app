@@ -5,7 +5,7 @@ import { getUsers } from '@/actions/getUser'
 import { Sidebar } from '@/components/Sidebar'
 import React from 'react'
 import { UserList } from './components/UserList '
-import { getCurrentUser } from '@/actions/getCurrentUser'
+
 
 type UserLayoutProps={
     children:React.ReactNode

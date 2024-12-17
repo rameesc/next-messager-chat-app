@@ -34,8 +34,8 @@ export const POST=async(req:Request)=>{
 
     }catch(error:any){
 
-        console.log('SETTINGS_ERROR_POST')
-        return new NextResponse('internal error')
+       
+        return new NextResponse(error)
     }
 
 }

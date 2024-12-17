@@ -11,7 +11,7 @@ import React, { Fragment, useMemo, useState } from 'react'
 import {Dialog, Transition} from '@headlessui/react'
 import { Avatar } from '@/components/Avatar'
 import { IoTrash } from 'react-icons/io5'
-import { Modal } from '@/components/Modal'
+
 import { ConfirmModal } from './ConfirmModal'
 import { GroupAvatar } from '@/components/GroupAvatar'
 import { userActiveList } from '@/hooks/useActiveList'
@@ -183,7 +183,7 @@ export const ProfileDrawer:React.FC<ProfileDrawerProps> = (
 
                                                     </dt>
                                                     <dd className='mt-1 text-sm text-gray-900 sm:col-span-2'>
-                                                        {data.users.map((user)=><p>{user.email}</p>)}
+                                                        {data.users.map((user)=><p key={user.id}>{user.email}</p>)}
                                                     </dd>
 
                                                     <dt

@@ -1,5 +1,4 @@
-import { Prisma } from "@prisma/client"
-import { getCurrentUser } from "./getCurrentUser"
+
 import { getSession } from "./getSession"
 import prisma from '@/libs/prismadb'
 export const getUsers=async()=>{
@@ -30,7 +29,8 @@ export const getUsers=async()=>{
         return users
 
 
-    }catch(error:any){
-        return[]
+    }catch(error:unknown){
+        if(error instanceof Error)
+        return error.message
     }
 }

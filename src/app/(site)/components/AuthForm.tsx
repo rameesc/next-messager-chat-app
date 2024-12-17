@@ -12,7 +12,7 @@ import toast from 'react-hot-toast'
 
 import {signIn, useSession} from "next-auth/react"
 import { useRouter } from 'next/navigation'
-import { auth } from '@/app/api/auth/[...nextauth]/route'
+
 
 type Veriant ="LOGIN" | "REGISTER"
 
@@ -205,11 +205,11 @@ export const AuthForm = () => {
 
             <div className='mt-6 flex gap-2'>
              <AuthSocialButton 
-              icon={<FaGithub/>}
+              Icon={FaGithub}
               onClick={()=>socialAction("github")}
              />
              <AuthSocialButton 
-              icon={<FaGoogle/>}
+              Icon={FaGoogle}
               onClick={()=>socialAction("google")}
              />
             </div>

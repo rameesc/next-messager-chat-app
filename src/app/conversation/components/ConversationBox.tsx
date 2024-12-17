@@ -1,9 +1,9 @@
 'use client'
 
-import { FullConversationType, FullMessageType } from '@/types'
+import { FullConversationType } from '@/types'
 import React, { useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import {Conversation,User,Message} from "@prisma/client"
+
 import {format} from "date-fns"
 import { useSession } from 'next-auth/react'
 import clsx from 'clsx'

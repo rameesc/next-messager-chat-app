@@ -102,9 +102,9 @@ export const POST=async(
 
     }catch(error:any){
 
-        console.log(error,"ERROR_POST_MESSAGE")
+        
 
-        return new NextResponse('Internal error')
+        return new NextResponse(error)
 
     }
 }

@@ -8,13 +8,12 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { IoMdPhotos } from "react-icons/io";
 import { MessageInput } from './MessageInput'
 import { IoIosSend } from "react-icons/io";
-import {CldUploadButton ,CldUploadWidget} from "next-cloudinary"
-import { pusherServer } from '@/libs/pusher';
-import { useOtherUser } from '@/hooks/useOtherUser';
+import { CldUploadWidget} from "next-cloudinary"
+
 
 export const Form = () => {
 
-    const [message,setMessage]=useState()
+  
     
 
     const {conversationId} = useConversation()

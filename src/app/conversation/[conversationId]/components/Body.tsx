@@ -7,8 +7,7 @@ import { MessageBox } from './MessageBox'
 import axios from 'axios'
 import { pusherClient } from '@/libs/pusher'
 import { find } from 'lodash'
-import { userActiveList } from '@/hooks/useActiveList'
-import { useSession } from 'next-auth/react'
+
 
 type BodyProps={
   initialMessages:FullMessageType[]
@@ -20,15 +19,15 @@ export const Body:React.FC<BodyProps> = ({
 
   const [messages ,setMessages] = useState(initialMessages)
 
-  const [type,setType]=useState<string|null>(null)
+  
 
   const bottomRef =useRef<HTMLDivElement>(null)
 
-  const {sender}= userActiveList()
+  
 
   const {conversationId} =useConversation()
 
-  const session =useSession()
+ 
 
   useEffect(()=>{
 
@@ -79,7 +78,7 @@ export const Body:React.FC<BodyProps> = ({
     
      pusherClient.subscribe(conversationId)
 
-    const types= pusherClient.subscribe('type')
+    
 
      pusherClient.bind("messages:new",messageHandler)
      pusherClient.bind('message:update',updateHandler)
