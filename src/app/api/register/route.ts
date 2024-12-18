@@ -39,7 +39,7 @@ export const POST =async(req:Request):Promise<Response>=>{
 
      //created user
 
-     const newUser = await prisma.user.create({
+    await prisma.user.create({
         data:{
             name,
             hashPassword:hashPassword,
