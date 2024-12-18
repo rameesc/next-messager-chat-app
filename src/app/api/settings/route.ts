@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 import prisma from '@/libs/prismadb'
 
 
-export const POST=async(req:Request)=>{
+export const POST=async(req:Request):Promise<Response>=>{
     try{
      const currentUser= await getCurrentUser()
 
