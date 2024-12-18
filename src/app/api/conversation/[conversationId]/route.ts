@@ -56,12 +56,19 @@ export  async function  DELETE(
             }
         });
 
-        existingConversation.users.forEach((user)=>{
-            if(user.email){
-                pusherServer.trigger(user.email,'conversation:remove',existingConversation)
-            }
-        })
+        await Promise.all(
+            existingConversation.users.forEach((user)=>{
+                if(user.email){
+                   return pusherServer.trigger(user.email,'conversation:remove',existingConversation)
+                }
 
+                return Promise.resolve()
+            })
+    
+
+        )
+
+        
       
 
         
