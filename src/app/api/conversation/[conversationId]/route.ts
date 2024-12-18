@@ -25,7 +25,7 @@ export const DELETE=async(
 
         if(!currentUser?.id){
 
-            return new NextResponse('Unauthorized',{status:400})
+            return  NextResponse.json({error:'Unauthorized'},{status:400})
 
         }
 
@@ -41,7 +41,7 @@ export const DELETE=async(
 
         if(!existingConversation){
 
-            return new NextResponse('Invalid id',{status:400})
+            return  NextResponse.json({error:'Invalid id'},{status:400})
 
         }
 
@@ -81,7 +81,7 @@ export const DELETE=async(
             return error.message
 
         }
-        return "An error occurred";
+        return NextResponse.json({ error: "An error occurred while deleting the conversation" }, { status: 500 });
        
     }
 
