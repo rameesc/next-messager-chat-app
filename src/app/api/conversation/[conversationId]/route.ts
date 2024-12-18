@@ -25,7 +25,7 @@ export  async function  DELETE(
 
         if(!currentUser?.id){
 
-            return  NextResponse.json({error:'Unauthorized'},{status:400})
+            return  NextResponse.json({error:'Unauthorized'},{status:401})
 
 
         }
