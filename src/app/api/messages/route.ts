@@ -7,7 +7,7 @@ import { pusherServer } from "@/libs/pusher"
 
 export const POST=async(
     req:Request
-)=>{
+):Promise<Response>=>{
 
 
     try{
@@ -21,7 +21,7 @@ export const POST=async(
 
         if(!currentUser?.id || !currentUser?.email){
 
-            return new NextResponse('Unauthorized',{status:401})
+            return NextResponse.json({message:'Unauthorized'},{status:401})
 
         }
 
@@ -104,7 +104,7 @@ export const POST=async(
         if(error instanceof Error){
             return error.message
         }
-        return "An unknown error occurred";
+        return NextResponse.json({error:'message_error'},{status:500})
         
     }
 }

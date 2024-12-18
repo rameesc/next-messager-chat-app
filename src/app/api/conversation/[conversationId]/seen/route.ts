@@ -17,7 +17,7 @@ export const POST=async(
     req:Request,
     {params}:Params
    
-)=>{
+):Promise<Response>=>{
 
     try{
 
@@ -48,7 +48,7 @@ export const POST=async(
 
         if(!conversation){
 
-            return new NextResponse('Invalid ID')
+            return  NextResponse.json({message:'Invalid ID'})
         }
 
         //find the last message
@@ -107,7 +107,7 @@ export const POST=async(
             return error.message
 
         }
-        return "An error occurred";
+        return NextResponse.json({ error: "An error occurred while deleting the conversation" }, { status: 500 });
     }
 
 

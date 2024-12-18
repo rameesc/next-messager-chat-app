@@ -7,7 +7,7 @@ import { pusherServer } from "@/libs/pusher"
 
 export const POST=async(
     req:Request
-)=>{
+):Promise<Response>=>{
 
     try{
 
@@ -24,12 +24,12 @@ export const POST=async(
 
 
         if(!currentUser?.id ||!currentUser.email){
-            return new NextResponse('Unauthorized',{status:401})
+            return  NextResponse.json({message:'Unauthorized'},{status:401})
         }
 
         if(isGroup && (!members || members.length < 2 || !name)){
 
-            return new NextResponse('invalid data')
+            return NextResponse.json({message:'invalid data'})
         }
 
         if(isGroup){
@@ -112,7 +112,7 @@ export const POST=async(
                 pusherServer.trigger(user.email,'conversation:new',newConversation)
 
             }
-    })
+        })
 
       
         return NextResponse.json(newConversation)
@@ -122,7 +122,7 @@ export const POST=async(
             return error.message
 
         }
-        return 'conversation post'
+        return NextResponse.json({ error: "An error occurred while deleting the conversation" }, { status: 500 });
         
     }
 }

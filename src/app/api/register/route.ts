@@ -9,49 +9,60 @@ import { NextResponse } from "next/server"
 
 
 export const POST =async(req:Request)=>{
+   
 
-    const body = await req.json();
+    try{
 
-    const { email,password,name} = body
+        const body = await req.json();
 
-    if(!email || !password || !name){
+     const { email,password,name} = body
 
-        return new NextResponse('missing info', {status:400})
-    }
+     if(!email || !password || !name){
+
+        return  NextResponse.json({message:'missing info'}, {status:400})
+     }
 
 
-    const isUser = await prisma.user.findUnique({
-        where:{
+     const isUser = await prisma.user.findUnique({
+         where:{
             email:email
         }
-    })
+     })
 
-    if(isUser){
-        return new NextResponse('user already exist', {status:400})
-    }
-
-
-    const hashPassword = await bcrypt.hash(password,12)
+     if(isUser){
+        return  NextResponse.json({message:'user already exist'}, {status:400})
+     }
 
 
-    //created user
+     const hashPassword = await bcrypt.hash(password,12)
 
-    const newUser = await prisma.user.create({
+
+     //created user
+
+     const newUser = await prisma.user.create({
         data:{
             name,
             hashPassword:hashPassword,
             email
         }
-    })
+     })
 
 
-    if(newUser){
+     if(newUser){
         return NextResponse.json({
             message:'successfully registerd',
             status:true
         })
-    }
+     }
 
+
+    }catch(error){
+
+        return NextResponse.json({
+            message:'USER-REGISTER-POST ERROR'
+        })
+    }
+    
     
 
 

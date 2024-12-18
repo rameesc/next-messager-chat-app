@@ -12,7 +12,7 @@ export const POST=async(req:Request)=>{
      const {name ,image}= body
 
      if(!currentUser?.id){
-        return new NextResponse('unAuthorized',{status:401})
+        return  NextResponse.json({message:'unAuthorized'},{status:401})
      }
 
      const updateUser =await prisma.user.update({
@@ -37,7 +37,7 @@ export const POST=async(req:Request)=>{
             return error.message
 
         }
-        return 'setting error post'
+          return NextResponse.json({ error: "An error occurred while deleting the conversation" }, { status: 500 });
     }
 
 }
