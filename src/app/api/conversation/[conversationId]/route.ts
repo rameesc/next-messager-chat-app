@@ -11,10 +11,10 @@ type Iparams={
 }
 
 
-export const DELETE=async(
+export default async function  DELETE(
     req:Request,
    {params}:Iparams
-)=>{
+){
 
 
     try{
@@ -26,6 +26,7 @@ export const DELETE=async(
         if(!currentUser?.id){
 
             return  NextResponse.json({error:'Unauthorized'},{status:400})
+
 
         }
 
