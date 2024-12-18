@@ -78,8 +78,8 @@ import prisma from '@/libs/prismadb'
     ],
     callbacks: {
       async session({ session, token }) {
-        if(session && token){
-          session.user.id = token.id ;
+        if(session && token && session.user){
+          
           return session;
 
         }
