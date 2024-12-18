@@ -3,6 +3,7 @@ import { NextResponse } from "next/server"
 
 import prisma from "@/libs/prismadb"
 import { pusherServer } from "@/libs/pusher"
+import { User } from "@prisma/client"
 
 
 export const POST=async(
@@ -85,7 +86,7 @@ export const POST=async(
 
         const lastMessage =updatedConversation.message[updatedConversation.message.length-1]
 
-        updatedConversation.users.map((user)=>{
+        updatedConversation.users.map((user:User)=>{
            pusherServer.trigger(user.email!,'conversation:update',{
                 id:conversationId,
                 messages :[lastMessage]
