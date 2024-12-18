@@ -4,6 +4,7 @@ import prisma from '@/libs/prismadb'
 export const getUsers=async()=>{
 
     const session=await getSession()
+    
 
     if(!session?.user?.email){
         return []
