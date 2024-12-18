@@ -46,7 +46,7 @@ export  async function  DELETE(
 
         }
 
-        const deletedConversation  = await prisma.conversation.deleteMany({
+         await prisma.conversation.deleteMany({
             where:{
                 id:conversationId,
                 userIds:{
