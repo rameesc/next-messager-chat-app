@@ -6,7 +6,7 @@ import ReactSelect from 'react-select'
 type SelectProps={
     label:string;
     value?:Record<string, unknown>;
-    onChange:(value:Record<string,unknown>)=> void;
+    onChange:()=> void;
     options:Record<string,unknown>[];
     disabled?:boolean;
     
