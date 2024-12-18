@@ -2,6 +2,7 @@ import { getCurrentUser } from "@/actions/getCurrentUser"
 import { NextResponse } from "next/server"
 import prisma from '@/libs/prismadb'
 import { pusherServer } from "@/libs/pusher"
+import { User } from "@prisma/client"
 
 
 type Iparams={
@@ -57,7 +58,7 @@ export  async function  DELETE(
         });
 
         await Promise.all(
-            existingConversation.users.forEach((user)=>{
+            existingConversation.users.forEach((user:User)=>{
                 if(user.email){
                    return pusherServer.trigger(user.email,'conversation:remove',existingConversation)
                 }
