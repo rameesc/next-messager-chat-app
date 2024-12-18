@@ -8,7 +8,7 @@ import { NextResponse } from "next/server"
 
 
 
-export const POST =async(req:Request)=>{
+export const POST =async(req:Request):Promise<Response>=>{
    
 
     try{
