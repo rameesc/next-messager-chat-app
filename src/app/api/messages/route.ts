@@ -103,7 +103,7 @@ export const POST=async(
 
     }catch(error:unknown){
         if(error instanceof Error){
-            return error.message
+            return NextResponse.json({message: error.message},{status:500})
         }
         return NextResponse.json({error:'message_error'},{status:500})
         

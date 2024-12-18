@@ -34,7 +34,7 @@ export const POST=async(req:Request):Promise<Response>=>{
 
     }catch(error:unknown){
         if(error instanceof Error){
-            return error.message
+            return NextResponse.json({message: error.message},{status:500})
 
         }
           return NextResponse.json({ error: "An error occurred while deleting the conversation" }, { status: 500 });
