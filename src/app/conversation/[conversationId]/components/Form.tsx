@@ -58,7 +58,7 @@ export const Form = () => {
     }
 
     const handleUpload=(results:CloudinaryUploadWidgetResults)=>{
-      if (results.event === 'success' && results.info ) {
+      if (results.event === 'success' && results.info &&typeof results.info !== 'string') {
 
         const imageUrl = results.info.secure_url;
 
