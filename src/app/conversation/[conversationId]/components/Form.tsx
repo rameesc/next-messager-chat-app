@@ -8,20 +8,10 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { IoMdPhotos } from "react-icons/io";
 import { MessageInput } from './MessageInput'
 import { IoIosSend } from "react-icons/io";
-import { CldUploadWidget} from "next-cloudinary"
+import { CldUploadWidget,CloudinaryUploadWidgetResults} from "next-cloudinary"
 
 
-interface CloudinaryUploadResult {
-  event: string; // For example, "success" or other events
-  info: {
-    secure_url: string; // The uploaded file's URL
-    public_id: string; // The file's public ID in Cloudinary
-    format: string; // File format (e.g., "jpg", "png")
-    width: number; // Image width
-    height: number; // Image height
-    [key: string]:unknown; // For any additional properties Cloudinary might return
-  };
-}
+
 export const Form = () => {
 
   
@@ -67,18 +57,30 @@ export const Form = () => {
 
     }
 
-    const handleUpload=(results:CloudinaryUploadResult)=>{
+    const handleUpload=(results:CloudinaryUploadWidgetResults)=>{
+      if (results.event === 'success' && results.info ) {
+
+        const imageUrl = results.info.secure_url;
+
+        axios.post('/api/messages',{
+          image:imageUrl,
+          conversationId:conversationId
+
+       })
+
+
+      }else {
+        console.error('Unexpected result:', results);
+      }
+        
+        
+
       
-        const imageUrl = results?.info?.secure_url;
           
        
 
 
-        axios.post('/api/messages',{
-            image:imageUrl,
-            conversationId:conversationId
-
-        })
+        
 
     }
 
@@ -90,7 +92,7 @@ export const Form = () => {
 
       <CldUploadWidget 
        uploadPreset="messager"
-       onSuccess={(results:CloudinaryUploadResult)=>handleUpload(results)}
+       onSuccess={(results)=>handleUpload(results)}
        >
         {({ open }) => {
             return (
