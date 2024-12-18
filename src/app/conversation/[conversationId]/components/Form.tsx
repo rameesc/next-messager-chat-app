@@ -19,7 +19,7 @@ interface CloudinaryUploadResult {
     format: string; // File format (e.g., "jpg", "png")
     width: number; // Image width
     height: number; // Image height
-    [key: string]: any; // For any additional properties Cloudinary might return
+    [key: string]:unknown; // For any additional properties Cloudinary might return
   };
 }
 export const Form = () => {
