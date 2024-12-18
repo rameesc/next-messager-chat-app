@@ -8,8 +8,13 @@ import { useEffect } from 'react'
 
 export const ActiveStatus = () => {
 
-    useEffect(()=>{
+    const callthis=()=>{
         return  useAciveChannel()
+
+    }
+
+    useEffect(()=>{
+        callthis()
     },[])
 
     
