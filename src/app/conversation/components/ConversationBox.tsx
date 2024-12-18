@@ -49,6 +49,8 @@ export const ConversationBox:React.FC<ConversationBoxProps> = ({
 
     },[data.message])
 
+    
+
 
 
     const userEmail=useMemo(()=>{
@@ -125,6 +127,10 @@ export const ConversationBox:React.FC<ConversationBoxProps> = ({
               >{format(new Date(lastMessages?.createdAt),'p')}</p>
 
             )}
+            
+          
+           
+            
 
            </div>
            <p
@@ -134,6 +140,7 @@ export const ConversationBox:React.FC<ConversationBoxProps> = ({
            >
             {lastMessageText} </p>
          </div>
+         
       </div>
     </div>
   )

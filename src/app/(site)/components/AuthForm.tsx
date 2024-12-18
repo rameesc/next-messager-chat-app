@@ -3,7 +3,7 @@
 import { Button } from '@/components/inputs/Button'
 import { Inputs } from '@/components/inputs/Input'
 import React, { useCallback, useEffect, useState } from 'react'
-import { FieldValue, FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import {  FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { AuthSocialButton } from './AuthSocialButton'
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
@@ -92,7 +92,7 @@ export const AuthForm = () => {
 
 
         }
-``
+
         if(variant=="LOGIN"){
 
           signIn("credentials",{

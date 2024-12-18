@@ -100,11 +100,14 @@ export const POST=async(
         
 
 
-    }catch(error:any){
-
+    }catch(error:unknown){
+        if(error instanceof Error){
+            return error.message
+        }
+        return "An unknown error occurred";
         
-
-        return new NextResponse(error)
-
     }
 }
+
+
+ 

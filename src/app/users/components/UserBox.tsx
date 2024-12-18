@@ -48,6 +48,7 @@ export const UserBox:React.FC<UserBoxProps> = ({
                     <p className='text-sm font-medium text-gray-900'>
                         {data.name}
                     </p>
+                    <div>10</div>
                   
                 </div>
             </div>
