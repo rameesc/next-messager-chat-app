@@ -11,6 +11,17 @@ import { IoIosSend } from "react-icons/io";
 import { CldUploadWidget} from "next-cloudinary"
 
 
+interface CloudinaryUploadResult {
+  event: string; // For example, "success" or other events
+  info: {
+    secure_url: string; // The uploaded file's URL
+    public_id: string; // The file's public ID in Cloudinary
+    format: string; // File format (e.g., "jpg", "png")
+    width: number; // Image width
+    height: number; // Image height
+    [key: string]: any; // For any additional properties Cloudinary might return
+  };
+}
 export const Form = () => {
 
   
@@ -56,7 +67,8 @@ export const Form = () => {
 
     }
 
-    const handleUpload=(results:unknown)=>{
+    const handleUpload=(results:CloudinaryUploadResult)=>{
+      
         const imageUrl = results?.info?.secure_url;
           
        
@@ -78,7 +90,7 @@ export const Form = () => {
 
       <CldUploadWidget 
        uploadPreset="messager"
-       onSuccess={(results)=>handleUpload(results)}
+       onSuccess={(results:CloudinaryUploadResult)=>handleUpload(results)}
        >
         {({ open }) => {
             return (
