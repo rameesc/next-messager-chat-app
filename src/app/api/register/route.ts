@@ -48,18 +48,18 @@ export const POST =async(req:Request):Promise<Response>=>{
      })
 
 
-     if(newUser){
+     
         return NextResponse.json({
             message:'successfully registerd',
             status:true
         })
-     }
+     
 
 
     }catch(error){
 
         if(error instanceof Error){
-            return error.message
+            return NextResponse.json({message: error.message},{status:500})
         }
         return NextResponse.json({error:'message_error'},{status:500})
     }
