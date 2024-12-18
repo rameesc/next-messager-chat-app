@@ -14,7 +14,7 @@ type Iparams={
 export  async function  DELETE(
     req:Request,
    {params}:Iparams
-){
+):Promise<Response>{
 
 
     try{
