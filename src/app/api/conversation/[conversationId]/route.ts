@@ -11,7 +11,7 @@ type Iparams={
 }
 
 
-export default async function  DELETE(
+export  async function  DELETE(
     req:Request,
    {params}:Iparams
 ){
@@ -72,7 +72,7 @@ export default async function  DELETE(
         
        
 
-        return NextResponse.json(deletedConversation)
+        return NextResponse.json({ message: "Conversation deleted successfully"},{status:200})
 
     
 
