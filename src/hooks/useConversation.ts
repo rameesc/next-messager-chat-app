@@ -11,13 +11,13 @@ export const useConversation=()=>{
 
     const conversationId=useMemo(()=>{
 
-        if(!params.conversationId){
+        if(!params||!params.conversationId){
             return ''
         }
 
         return params.conversationId as string
 
-    },[params.conversationId])
+    },[params])
 
     const isOpen=useMemo(()=>!!conversationId,[conversationId])
 
