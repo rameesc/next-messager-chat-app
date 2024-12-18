@@ -3,7 +3,7 @@
 
 import { useConversation } from '@/hooks/useConversation'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { IoMdPhotos } from "react-icons/io";
 import { MessageInput } from './MessageInput'
@@ -56,7 +56,7 @@ export const Form = () => {
 
     }
 
-    const handleUpload=(results:any)=>{
+    const handleUpload=(results:unknown)=>{
         const imageUrl = results?.info?.secure_url;
           
        

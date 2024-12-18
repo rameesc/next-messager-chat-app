@@ -117,8 +117,12 @@ export const POST=async(
       
         return NextResponse.json(newConversation)
 
-    } catch(error:any){
-        return new NextResponse(error)
+    } catch(error:unknown){
+        if(error instanceof Error){
+            return error.message
 
+        }
+        return 'conversation post'
+        
     }
 }

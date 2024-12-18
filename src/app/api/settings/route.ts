@@ -32,10 +32,12 @@ export const POST=async(req:Request)=>{
     
 
 
-    }catch(error:any){
+    }catch(error:unknown){
+        if(error instanceof Error){
+            return error.message
 
-       
-        return new NextResponse(error)
+        }
+        return 'setting error post'
     }
 
 }

@@ -76,13 +76,13 @@ export const DELETE=async(
     
 
 
-    }catch(error:any){
-        console.log('DELETE_CONVERSATION')
+    }catch(error:unknown){
+        if(error instanceof Error){
+            return error.message
 
-        return new NextResponse('Internal Error',{
-            status:500
-
-        })
+        }
+        return "An error occurred";
+       
     }
 
 }

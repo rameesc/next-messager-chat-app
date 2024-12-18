@@ -9,7 +9,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
 import toast from 'react-hot-toast'
-import { FiAlertCircle, FiAlertTriangle } from 'react-icons/fi'
+import { FiAlertTriangle } from 'react-icons/fi'
 
 type ConfirmModalProps={
     isOpen?:boolean

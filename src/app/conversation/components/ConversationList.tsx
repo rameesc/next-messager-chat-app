@@ -4,10 +4,10 @@
 
 import { useConversation } from '@/hooks/useConversation'
 import { FullConversationType } from '@/types'
-import { Conversation, User } from '@prisma/client'
+import {  User } from '@prisma/client'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { MdGroupAdd } from "react-icons/md";
 import { ConversationBox } from './ConversationBox'
 import { GroupChatModal } from './GroupChatModal'
@@ -126,7 +126,7 @@ export const ConversationList:React.FC<ConversationListProps> = (
 
       }
 
-    },[pusherKey,conversationId])
+    },[pusherKey,conversationId,router])
 
 
   return (

@@ -1,5 +1,5 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { error } from "console";
+
 import { NextResponse } from "next/server";
 
 import prisma from '@/libs/prismadb'
@@ -102,10 +102,12 @@ export const POST=async(
 
 
 
-    }catch(error:any){
+    }catch(error:unknown){
+        if(error instanceof Error){
+            return error.message
 
-       
-        return new NextResponse(error)
+        }
+        return "An error occurred";
     }
 
 

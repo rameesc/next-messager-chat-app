@@ -54,7 +54,7 @@ export const SettingsModal:React.FC<SettingsModalProps> = (
    
 
 
-    const handleUpload=(result:any)=>{
+    const handleUpload=(result:unknown)=>{
 
         setValue("image",result?.info?.secure_url,{
             shouldValidate:true

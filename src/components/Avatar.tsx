@@ -17,8 +17,8 @@ export const Avatar:React.FC<AvatarProps> = ({
   const {members} = userActiveList()
 
   const isActive=useMemo(()=>{
-    return members.indexOf(user?.email!)!==-1
-  },[members])
+    return members.indexOf(user?.email?? "Default Email")!==-1
+  },[members,user.email])
 
  
   return (

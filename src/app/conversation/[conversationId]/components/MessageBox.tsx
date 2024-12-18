@@ -2,11 +2,11 @@
 
 
 
-import { getCurrentUser } from '@/actions/getCurrentUser'
+
 import { Avatar } from '@/components/Avatar'
-import { useOtherUser } from '@/hooks/useOtherUser'
+
 import { FullMessageType } from '@/types'
-import { Message } from '@prisma/client'
+
 import clsx from 'clsx'
 import { format } from 'date-fns'
 import { useSession } from 'next-auth/react'
