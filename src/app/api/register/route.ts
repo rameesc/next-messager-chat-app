@@ -58,9 +58,10 @@ export const POST =async(req:Request)=>{
 
     }catch(error){
 
-        return NextResponse.json({
-            message:'USER-REGISTER-POST ERROR'
-        })
+        if(error instanceof Error){
+            return error.message
+        }
+        return NextResponse.json({error:'message_error'},{status:500})
     }
     
     
