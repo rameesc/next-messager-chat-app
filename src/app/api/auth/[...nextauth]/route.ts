@@ -76,6 +76,25 @@ export const authOptions: AuthOptions = {
         })
 
     ],
+    callbacks: {
+      async session({ session, token }) {
+        if(session && token){
+          session.user.id = token.id ;
+          return session;
+
+        }
+        return session;
+
+        
+      },
+
+      async jwt({ token, user }) {
+        if (user) {
+          token.id = user.id;
+        }
+        return token;
+      },
+    },
     debug :process.env.NODE_ENV  ==='development',
     session:{
         strategy:"jwt",
@@ -85,6 +104,6 @@ export const authOptions: AuthOptions = {
 
 }
 
- const handler= NextAuth(authOptions)
+ export const handler= NextAuth(authOptions)
 
 export {handler as GET, handler as POST , }
