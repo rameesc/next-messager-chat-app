@@ -10,7 +10,7 @@ import toast from 'react-hot-toast'
 import { Modal } from './Modal'
 import { Inputs } from './inputs/Input'
 import Image from 'next/image'
-import { CldUploadWidget } from 'next-cloudinary'
+import { CldUploadWidget ,CloudinaryUploadWidgetResults} from 'next-cloudinary'
 import { Button } from './inputs/Button'
 
 
@@ -54,11 +54,14 @@ export const SettingsModal:React.FC<SettingsModalProps> = (
    
 
 
-    const handleUpload=(result:unknown)=>{
+    const handleUpload=(results:CloudinaryUploadWidgetResults)=>{
+        if (results.event === 'success' && results.info && typeof results.info !== 'string') {
+            setValue("image",results?.info?.secure_url,{
+                shouldValidate:true
+            })
 
-        setValue("image",result?.info?.secure_url,{
-            shouldValidate:true
-        })
+        }
+       
     }
 
     const onSubmit:SubmitHandler<FieldValues>=(data)=>{
