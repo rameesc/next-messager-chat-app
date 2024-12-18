@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import ReactSelect from 'react-select'
+import ReactSelect,{MultiValue,ActionMeta} from 'react-select'
 
 type SelectProps={
     label:string;
     value?:Record<string, unknown>;
-    onChange:(value:Record<string,unknown>)=> void;
+    onChange:(newValue: MultiValue<unknown>, actionMeta: ActionMeta<unknown>)=>void
     options:Record<string,unknown>[];
     disabled?:boolean;
     
